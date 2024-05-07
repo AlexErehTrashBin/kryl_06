@@ -17,13 +17,13 @@ fn calculate_rc<F>(f4: F, a: f64, b: f64, n: usize) -> f64
     where F: Fn(f64) -> f64 {
     let h = (b - a) / n as f64;
     let factor = (b - a) * h.powi(4) / 180.0;
-    let bruh: f64 = (0..n)
+    let cofactor: f64 = (0..n)
         .map(|i| {
             let x = a + i as f64 * h;
             f4(x).abs()
         })
         .reduce(f64::max).unwrap();
-    return factor * bruh;
+    return factor * cofactor;
 }
 
 fn main() {
